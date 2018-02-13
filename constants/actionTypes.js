@@ -1,0 +1,2 @@
+export const DATA_LOAD_SUCCESS = "DATA_LOAD_SUCCESS";
+export const SAVE_MY_DATA = "SAVE_MY_DATA";
