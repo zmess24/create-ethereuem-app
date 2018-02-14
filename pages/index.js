@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Head from "next/head";
+import Layout from '../components/Layout';
 import DataShow from "../components/DataShow";
 import DataForm from "../components/DataForm";
 import withRedux from "next-redux-wrapper";
@@ -8,10 +8,7 @@ import initStore from "../store";
 class HomePage extends Component {
     render() {
         return (
-            <div>
-                <Head>
-                    <link rel="stylesheet" href="/static/styles/styles.css"></link>
-                </Head>
+            <Layout>
                 <div className="App">
                     <h1>Hi, this is an example to demonstrate using redux-persist with nextjs</h1>
                     <p>1) NextJS will first send to client a pure HTML page containing the rendered components on state of loading.
@@ -24,7 +21,7 @@ class HomePage extends Component {
                     <DataForm />
                     <h4>by @nickmarca</h4>
                 </div>
-            </div>
+            </Layout>
         )
     }
 }

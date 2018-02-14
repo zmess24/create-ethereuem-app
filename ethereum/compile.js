@@ -10,10 +10,9 @@ try {
     const buildPath = path.resolve(__dirname, 'build');
     fs.removeSync(buildPath);
     
-
     // Read in contracts and compile
-    const campaignPath = resolve(__dirname, 'contracts', 'Casino.sol');
-    const source = fs.readFileSync(campaignPath, 'utf8');
+    const contractPath = resolve(__dirname, 'contracts', 'Casino.sol');
+    const source = fs.readFileSync(contractPath, 'utf8');
     const output = solc.compile(source, 1).contracts;
 
     // Recreate build folder
