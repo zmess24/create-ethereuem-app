@@ -1,2 +1,18 @@
+# Logs
+logs
+*.logs*
+
+# Dependency directory
 node_modules
+
+# Dist folder
 .next/
+
+# Environmental variables
+.env
+
+#VSCode metadata
+.vscode
+
+# Mac files
+.DS_Store

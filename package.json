@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "eth-compile": "node ./ethereum/compile.js",
+    "eth-deploy": "node ./ethereum/deploy.js",
     "dev": "next",
     "build": "next build",
     "start": "next start"
@@ -18,9 +20,13 @@
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
-    "redux-persist": "^5.7.2"
+    "redux-persist": "^5.7.2",
+    "semantic-ui-react": "^0.78.2"
   },
   "devDependencies": {
+    "chalk": "^2.3.1",
+    "dotenv": "^5.0.0",
+    "fs-extra": "^5.0.0",
     "ganache-cli": "^6.0.3",
     "mocha": "^5.0.0",
     "solc": "^0.4.19"
