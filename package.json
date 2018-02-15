@@ -6,6 +6,7 @@
   "scripts": {
     "eth-compile": "node ./ethereum/compile.js",
     "eth-deploy": "node ./ethereum/deploy.js",
+    "eth-test": "mocha",
     "dev": "next",
     "build": "next build",
     "start": "next start"
@@ -21,6 +22,7 @@
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-persist": "^5.7.2",
+    "redux-thunk": "^2.2.0",
     "semantic-ui-react": "^0.78.2",
     "web3": "^1.0.0-beta.29"
   },
