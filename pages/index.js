@@ -9,11 +9,6 @@ class HomePage extends Component {
     render() {
         return (
             <Layout>
-                <div>
-                    {/* <div>Prop from Redux {this.props.foo}</div>
-                    <div>Prop from getInitialProps {this.props.custom}</div> */}
-                    <h1>Hello World</h1>
-                </div>
                 <DataShow />
             </Layout>
         )

@@ -1,7 +1,7 @@
 import * as types from '../constants/actionTypes';
 import objectAssign from 'object-assign';
-// import factory from '../ethereum/factory';
-// import web3 from '../ethereum/web3';
+import factory from '../ethereum/factory';
+import web3 from '../ethereum/web3';
 
 function loadProjectsRequest(projects) {
     return { type: types.LOAD_PROJECTS_REQUEST, projects };
@@ -27,7 +27,21 @@ function resolveAfter2Seconds() {
 
 export  function fetchProjects(){
     return async function (dispatch) {
-        const data = await resolveAfter2Seconds();
+        // const data = await resolveAfter2Seconds();
+        const numberOfBets = await factory.methods.numberOfBets().call();
+        const totalBet = await factory.methods.totalBet().call();
+        const minimumBet = await factory.methods.minimumBet().call();
+        const maxAmountofBets = await factory.methods.maxAmountOfBets().call();
+        const roundsWithOutWinner = await factory.methods.roundsWithOutWinner().call();
+
+        const data = {
+            numberOfBets,
+            totalBet: web3.utils.fromWei(totalBet, 'ether'),
+            minimumBet: web3.utils.fromWei(minimumBet, 'ether'),
+            maxAmountofBets,
+            roundsWithOutWinner
+
+        }
         dispatch({
             type: types.LOAD_PROJECTS_SUCCESS, data
         }) 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Table, Grid, Card, Divider, Form, Input, Label, Button, Message, Loader, Dimmer, Segment, Icon } from 'semantic-ui-react';
 
 class DataShow extends Component {
 
@@ -22,28 +23,52 @@ class DataShow extends Component {
         );
     }
 
-    renderContent() {
-        const items = this.props.projects.map(project => {
-            return (
-                <li key={project}>{project}</li>
-            )
-        });
-        
-        return (
-            <ul>
-                {items}
-            </ul>
-        );
+    renderCards() {
+        const {
+            numberOfBets,
+            roundsWithOutWinner,
+            totalBet,
+            minimumBet,
+            maxAmountofBets
+        } = this.props.projects;
+
+        const items = [
+            {
+                header: numberOfBets,
+                meta: 'Number of Bets',
+                description: 'The number of users who have placed a bet.',
+                style: { overflowWrap: 'break-word' }
+            },
+            {
+                header: roundsWithOutWinner,
+                meta: 'Streak',
+                description: 'The number of games that have been played since a winner was picked.'
+            },
+            {
+                header: totalBet,
+                meta: 'Ether',
+                description: 'The total amount of Ether currently in the pot.'
+            },
+            {
+                header: minimumBet,
+                meta: 'Minimum Bet',
+                description: 'The minimum of Ether bet.'
+            },
+            {
+                header: maxAmountofBets,
+                meta: 'Max Amount of Bets',
+                description: 'Number of bets allowed before a winner is drawn.'
+            }
+        ];
+
+        return <Card.Group stackable items={items} itemsPerRow={5} />
     }
 
     render() {
         return (
             <div className="DataShow">
                 <div>
-                    <div>Your data:</div>
-                    <br />
-                    <br />
-                    {!this.props.loaded ? this.renderLoading() : this.renderContent()}
+                    {!this.props.loaded ? this.renderLoading() : this.renderCards()}
                     {/* {!this.props.loaded ? <h2>Loading</h2> : this.renderContent()} */}
                 </div>
             </div>
