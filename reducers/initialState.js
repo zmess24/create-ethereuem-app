@@ -1,4 +1,4 @@
 export default {
-    myData: {},
+    projects: [],
     status: {loaded: false, err: false}
 };

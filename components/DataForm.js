@@ -29,7 +29,8 @@ class DataForm extends Component {
     render() {
         return (
             <div className="DataForm">
-                {this.props.status.loaded ? this.renderForm() : "Loading ...."}
+                {/* {this.props.status.loaded ? this.renderForm() : "Loading ...."} */}
+                <h1>Test</h1>
             </div>
         );
     }

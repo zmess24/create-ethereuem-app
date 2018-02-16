@@ -18,22 +18,22 @@ class DataShow extends Component {
 
     renderLoading() {
         return (
-            <p>Please wait 3 seconds, loading data from localforage...</p>
+            <p>Please wait 2 seconds, loading data from localforage...</p>
         );
     }
 
     renderContent() {
-        const data = Object.values(this.props.myData);
-
+        const items = this.props.projects.map(project => {
+            return (
+                <li key={project}>{project}</li>
+            )
+        });
+        
         return (
-            <div>
-                {
-                    data.length ?
-                        data.map((d, i) => this.renderDataItem(d.key, d.value, i)) :
-                        "You have no data yet, try to add"
-                }
-            </div>
-        )
+            <ul>
+                {items}
+            </ul>
+        );
     }
 
     render() {
@@ -43,17 +43,18 @@ class DataShow extends Component {
                     <div>Your data:</div>
                     <br />
                     <br />
-                    {!this.props.status.loaded ? this.renderLoading() : this.renderContent()}
+                    {!this.props.loaded ? this.renderLoading() : this.renderContent()}
+                    {/* {!this.props.loaded ? <h2>Loading</h2> : this.renderContent()} */}
                 </div>
             </div>
         );
     }
 }
 
-const mapStateToProps = ({ myData, status }) => {
+const mapStateToProps = state => {
     return {
-        myData,
-        status
+        projects: state.projects.projects,
+        loaded: state.projects.status.loaded
     }
 };
 

@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import myDataReducer from "./myDataReducer";
-import statusReducer from "./statusReducer";
+import projectReducer from './projectReducer';
 
 export default combineReducers({
-    myData: myDataReducer,
-    status: statusReducer
+    projects: projectReducer,
 });

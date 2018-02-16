@@ -1,11 +1,10 @@
-import createStoreFromServer from "./serverStore";
-import createStoreFromClient from "./clientStore";
-import _initialState from './initialState';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from '../reducers';
+import { fetchProjects } from '../actions'
 
-export default (initialState = _initialState, props) => {
-    if (props.isServer) {
-        return createStoreFromServer(initialState, props)
-    } else {
-        return createStoreFromClient(initialState, props);
-    }
+export default () => {
+    const store = createStore(rootReducer, applyMiddleware(thunk));
+    store.dispatch(fetchProjects());
+    return store;
 };
