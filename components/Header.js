@@ -5,15 +5,9 @@ class Header extends Component {
     state = {  }
     render() {
         return (
-            <Menu>
-                <Menu.Item name='explore'>Submit</Menu.Item>
-                <Menu.Item name='start'>Start a Project</Menu.Item>
-                {/* <Menu.Menu position='middle'>
-                    <Menu.Item name='logo'>Create Ethereum App</Menu.Item>
-                </Menu.Menu> */}
-                <Menu.Menu position='right'>
-                    <Input transparent={true} className='icon' icon='search' placeholder='Search...' />
-                </Menu.Menu>
+            <Menu borderless size="large">
+                <Menu.Item name='logo'><img src='../static/logo.jpg'/></Menu.Item>
+                <Menu.Item header>Create Ethereum App</Menu.Item>
             </Menu>
         );
     }
