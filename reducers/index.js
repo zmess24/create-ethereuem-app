@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import projectReducer from './projectReducer';
+import betReducer from './betReducer';
+import summaryReducer from './summaryReducer';
 
 export default combineReducers({
-    projects: projectReducer,
+    bet: betReducer,
+    summary: summaryReducer,
 });

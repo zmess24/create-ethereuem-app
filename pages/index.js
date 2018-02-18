@@ -5,7 +5,7 @@ import withRedux from "next-redux-wrapper";
 import initStore from '../store';
 
 
-class HomePage extends Component {
+class App extends Component {
     render() {
         return (
             <Layout>
@@ -15,4 +15,4 @@ class HomePage extends Component {
     }
 }
 
-export default withRedux(initStore, null, null)(HomePage);
+export default withRedux(initStore, null, null)(App);
