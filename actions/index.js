@@ -17,16 +17,14 @@ export function fetchSummary(){
             maxAmountofBets,
             roundsWithOutWinner
         }
-        
         dispatch({ type: types.LOAD_SUMMARY_SUCCESS, data }) ;
     }
 
 };
 
 export function submitBet(bet, numberSelected) {
-    let data = {bet, numberSelected}
     return async function (dispatch) {
-        dispatch({ type: types.SUBMIT_BET_REQUEST, data});
+        dispatch({ type: types.SUBMIT_BET_REQUEST, data: { bet, numberSelected } });
 
         try {
             const accounts = await web3.eth.getAccounts();
@@ -36,10 +34,11 @@ export function submitBet(bet, numberSelected) {
                 gas: '1000000'
             })
 
-            dispatch({ type: types.SUBMIT_BET_SUCCESS});
+            dispatch({ type: types.SUBMIT_BET_SUCCESS });
 
         } catch (err) {
-            let error = err.message
+            let error = err.message;
+            let data = { error: error, bet: bet, numberSelected: numberSelected };
             if (error === "while converting number to string, invalid number value '', should be a number matching (^-?[0-9.]+).") {
                 dispatch({ type: types.SUBMIT_BET_ERROR, data: "Please enter an amount of ether to bet." })
             } else if (error.includes("Returned error: Error: MetaMask Tx Signature: User denied transaction signature")) {

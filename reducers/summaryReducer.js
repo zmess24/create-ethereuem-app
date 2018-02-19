@@ -2,7 +2,6 @@ import { LOAD_SUMMARY_SUCCESS } from '../constants/actionTypes';
 import initialState from './initialState';
 
 export default function summaryReducer(state = initialState.summary, action) {
-    
     switch (action.type) {
         case LOAD_SUMMARY_SUCCESS:
             return Object.assign({}, {

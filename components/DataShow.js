@@ -7,8 +7,8 @@ import { Table, Grid, Card, Divider, Form, Input, Label, Button, Message, Loader
 
 class DataShow extends Component {
     state = {
-        ether: Object.assign({}, this.props.bet.ether),
-        numberSelected: Object.assign({}, this.props.bet.numberSelected),
+        ether: '',
+        numberSelected: 0
     }
 
     renderCards() {
@@ -72,15 +72,11 @@ class DataShow extends Component {
     onSubmit = async (event) => {
         event.preventDefault();
         const { ether, numberSelected } = this.state;
-        this.props.betAction.submitBet(ether, numberSelected);
-        Router.push('/', {
-            shallow: true
-        });
+        this.props.betAction.submitBet(ether, numberSelected)
     }
 
     render() {
         const { Row, Column } = Grid;
-        debugger
         return (
             <Grid>
                 <Row>
@@ -174,8 +170,9 @@ class DataShow extends Component {
 const mapStateToProps = state => {
     return {
         summary: state.summary,
-        bet: state.bet,
         loading: state.bet.status.loading,
+        ether: state.bet.ether,
+        numberSelected: state.bet.numberSelected,
         statusHeader: state.bet.status.statusHeader,
         statusMessage: state.bet.status.statusMessage,
         success: state.bet.status.success,

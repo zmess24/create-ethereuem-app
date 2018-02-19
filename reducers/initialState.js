@@ -15,6 +15,6 @@ export default {
             statusMessage: "Ready to accept transaction.",
             success: false,
             error: false
-        }
-    },
+        },
+    }
 };

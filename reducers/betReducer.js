@@ -5,7 +5,7 @@ export default function betReducer(state = initialState.bet, action) {
     switch (action.type) {
         case SUBMIT_BET_REQUEST:        
             return Object.assign({}, {
-                ether: action.data.bet,
+                ether: action.data.ether,
                 numberSelected: action.data.numberSelected,
                 status: {
                     loading: true,
@@ -17,6 +17,8 @@ export default function betReducer(state = initialState.bet, action) {
             });
         case SUBMIT_BET_SUCCESS:
             return Object.assign({}, {
+                ether: '',
+                numberSelected: 0,
                 status: {
                     loading: false,
                     statusMessage: 'Ready to accept transaction.',
@@ -27,6 +29,8 @@ export default function betReducer(state = initialState.bet, action) {
             });
         case SUBMIT_BET_ERROR:
             return Object.assign({}, {
+                ether: action.data.bet,
+                numberSelected: action.data.numberSelected,
                 status: {
                     loading: false,
                     statusHeader: "Error",
