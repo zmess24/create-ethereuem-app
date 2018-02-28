@@ -72,7 +72,12 @@ class DataShow extends Component {
     onSubmit = async (event) => {
         event.preventDefault();
         const { ether, numberSelected } = this.state;
-        this.props.betAction.submitBet(ether, numberSelected)
+        await this.props.betAction.submitBet(ether, numberSelected)
+            .then(
+                Router.push('/', {
+                    shallow: true
+                })
+            )
     }
 
     render() {
